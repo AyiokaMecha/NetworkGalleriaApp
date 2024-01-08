@@ -11,7 +11,9 @@ import android.widget.GridLayout
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bignerdranch.photogallery.api.FlickrApi
 import com.bignerdranch.photogallery.databinding.FragmentPhotoGalleryBinding
@@ -82,11 +84,13 @@ class PhotoGalleryFragment : Fragment() {
 
 
         viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 //            photoGalleryViewModel.galleryItems.collect {
 //                items ->
-            photoGalleryViewModel.uiState.collect { state ->
-                searchView?.setQuery(state.query, false)
-                binding.photoGrid.adapter = PhotoListAdapter(state.images)
+                photoGalleryViewModel.uiState.collect { state ->
+                    searchView?.setQuery(state.query, false)
+                    binding.photoGrid.adapter = PhotoListAdapter(state.images)
+                }
             }
 
         }

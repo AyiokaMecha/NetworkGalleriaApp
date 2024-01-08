@@ -32,3 +32,5 @@ class PhotoListAdapter(
         return galleryItems.size
     }
 }
+
+
