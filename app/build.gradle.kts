@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -62,4 +63,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation ("io.coil-kt:coil:2.0.0-rc02")
     implementation("androidx.datastore:datastore-preferences-android:1.1.0-alpha07")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
 }
